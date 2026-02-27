@@ -1,5 +1,5 @@
 <?php
-namespace Sitedigitalweb\Usuario\Tenant;
+namespace Sitedigitalweb\Dresses\Tenant;
 
 use Hyn\Tenancy\Traits\UsesTenantConnection;
 use Illuminate\Database\Eloquent\Model;
