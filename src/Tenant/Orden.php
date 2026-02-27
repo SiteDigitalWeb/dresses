@@ -63,7 +63,7 @@ public function vendedorRelacion()
     // Relación muchos a muchos con productos
     public function productos()
     {
-        return $this->belongsToMany(\Sitedigitalweb\Dresses\Tenant\Producto::class, 'orden_producto')
+        return $this->belongsToMany(\Sitedigitalweb\Dresses\Tenant\Producto::class, 'dresses_orden_producto')
             ->withPivot([
                 'cantidad',
                 'talla',
