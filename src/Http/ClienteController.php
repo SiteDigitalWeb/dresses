@@ -1,9 +1,9 @@
 <?php
 
-namespace DigitalsiteSaaS\Dresses\Http;
+namespace Sitedigitalweb\Dresses\Http;
 
 use Illuminate\Http\Request;
-use DigitalsiteSaaS\Dresses\Tenant\Cliente;
+use Sitedigitalweb\Dresses\Tenant\Cliente;
 use App\Http\Controllers\Controller;
 
 class ClienteController extends Controller
@@ -66,7 +66,7 @@ class ClienteController extends Controller
         $request->validate([
             'nombres' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
-            'email' => 'nullable|email|unique:clientes,email',
+            'email' => 'nullable|email',
             'telefono' => 'nullable|string|max:20',
             'telefono2' => 'nullable|string|max:20',
             'ciudad' => 'nullable|string|max:100',
@@ -77,7 +77,7 @@ class ClienteController extends Controller
         ]);
 
         // Crear el cliente - usando el modelo de tu namespace
-        $cliente = Cliente::create([
+        $cliente =  \Sitedigitalweb\Dresses\Tenant\Cliente::create([
             'nombres' => $request->nombres,
             'apellidos' => $request->apellidos,
             'telefono' => $request->telefono,

@@ -23,14 +23,14 @@ Route::get('dresses/clientes', 'Sitedigitalweb\Dresses\Http\UsuariaController@cl
 Route::get('dresses/editar/cliente/{id}', 'Sitedigitalweb\Dresses\Http\UsuariaController@editarclientes');
 Route::get('dresses/editar/clientepos/{id}', 'Sitedigitalweb\Dresses\Http\UsuariaController@editarclientespos');
 Route::get('dresses/editar/orden/{id}', 'DigitalsiteSaaS\Dresses\Http\OrdenController@editarorden');
-Route::post('dresses/dresses/eidtar-clienteweb/{id}', 'DigitalsiteSaaS\Dresses\Http\UsuariaController@editarclienteweb');
+Route::post('dresses/dresses/eidtar-clienteweb/{id}', 'Sitedigitalweb\Dresses\Http\UsuariaController@editarclienteweb');
 
 
 
 Route::post('dresses/dresses/eidtar-clientewebpos/{id}', 'DigitalsiteSaaS\Dresses\Http\UsuariaController@editarclientewebpos');
 
-Route::get('dresses/editar/producto/{id}', 'DigitalsiteSaaS\Dresses\Http\UsuariaController@editarproductosweb');
-Route::post('dresses/editar/producto/{id}', 'DigitalsiteSaaS\Dresses\Http\UsuariaController@editarproductoswebs');
+Route::get('dresses/editar/producto/{id}', 'Sitedigitalweb\Dresses\Http\UsuariaController@editarproductosweb');
+Route::post('dresses/editar/producto/{id}', 'Sitedigitalweb\Dresses\Http\UsuariaController@editarproductoswebs');
 
 Route::get('dresses/edit/store/{id}', 'Sitedigitalweb\Dresses\Http\UsuariaController@editstore');
 Route::post('dresses/edit/store/{id}', 'Sitedigitalweb\Dresses\Http\UsuariaController@editstores');
@@ -62,7 +62,7 @@ Route::patch(
 Route::get('dresses/factura/crear-facturacion/{id}', 'DigitalsiteSaaS\Dresses\Http\UsuariaController@crearfactura');
 Route::post('dresses/factura/crear-factura', 'DigitalsiteSaaS\Dresses\Http\UsuariaController@createfactura');
 
-Route::post('dresses/crear-impuesto', 'DigitalsiteSaaS\Dresses\Http\OrdenController@createimpuesto');
+Route::post('dresses/crear-impuesto', 'Sitedigitalweb\Dresses\Http\OrdenController@createimpuesto');
 
 Route::get('Facturacione/{id}', 'DigitalsiteSaaS\Dresses\Http\UsuariaController@facturacione');
 Route::get('Facturacione/{id}/ajax-subcat', 'DigitalsiteSaaS\Dresses\Http\UsuariaController@facturacioneajax');
@@ -115,7 +115,7 @@ Route::post('/dresses/venta', [DigitalsiteSaaS\Dresses\Http\UsuariaController::c
 Route::post('/guardar-venta', [Sitedigitalweb\Dresses\Http\OrdenController::class, 'store'])->name('dresses.venta');
 Route::get('/buscar-clientes', [DigitalsiteSaaS\Dresses\Http\OrdenController::class, 'searchClientes'])->name('dresses.clients');
 Route::get('/buscar-productos', [DigitalsiteSaaS\Dresses\Http\OrdenController::class, 'searchProductos'])->name('dresses.searchs');
-Route::post('/clientes', [DigitalsiteSaaS\Dresses\Http\ClienteController::class, 'store'])->name('clientes.store');
+Route::post('/clientes', [Sitedigitalweb\Dresses\Http\ClienteController::class, 'store'])->name('clientes.store');
 
 Route::get('/orders/{id}/edit', [Sitedigitalweb\Dresses\Http\OrdenController::class, 'edit'])->name('orders.edit');
 Route::get('/ordersa/{id}/edit', [Sitedigitalweb\Dresses\Http\OrdenController::class, 'edit'])->name('orders.edita');
@@ -126,14 +126,14 @@ Route::get('/orders/{id}', [DigitalsiteSaaS\Dresses\Http\OrdenController::class,
 
 Route::get('/orders/{id}/pdf', [DigitalsiteSaaS\Dresses\Http\OrdenController::class, 'generatePDF'])->name('orders.pdf');
 
-Route::get('/orders/{id}/print', [DigitalsiteSaaS\Dresses\Http\OrdenController::class, 'print'])->name('orders.print');
+Route::get('/orders/{id}/print', [Sitedigitalweb\Dresses\Http\OrdenController::class, 'print'])->name('orders.print');
 
 // Para visualizar en navegador
-Route::get('/orders/{id}/view', [DigitalsiteSaaS\Dresses\Http\OrdenController::class, 'generatePDF'])->name('orders.view');
+Route::get('/orders/{id}/view', [Sitedigitalweb\Dresses\Http\OrdenController::class, 'generatePDF'])->name('orders.view');
 
 // Para descargar
 Route::get('/orders/{id}/download', function($id) {
-    return app()->call('DigitalsiteSaaS\Dresses\Http\OrdenController@generatePDF', ['id' => $id, 'download' => true]);
+    return app()->call('Sitedigitalweb\Dresses\Http\OrdenController@generatePDF', ['id' => $id, 'download' => true]);
 })->name('orders.download');
 
 Route::get('/dresses/impuestos', function() {

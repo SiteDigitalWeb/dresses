@@ -105,7 +105,7 @@ public function actualizar($id){
  if(!$this->tenantName){
  $user = Usuario::find($id);
  }else{
- $user = \DigitalsiteSaaS\Usuario\Tenant\Usuario::find($id);  
+ $user = \Sitedigitalweb\Dresses\Tenant\Usuario::find($id);  
  }
  $user->name = Input::get('name');
  $user->last_name = Input::get('last_name');
@@ -137,8 +137,8 @@ $producto = Prodcuto::find($id);
 $tienda = Tienda::all();
 }
 else{
-$producto = \DigitalsiteSaaS\Dresses\Tenant\Producto::find($id);
-$tienda = \DigitalsiteSaaS\Dresses\Tenant\Tienda::all();
+$producto = \Sitedigitalweb\Dresses\Tenant\Producto::find($id);
+$tienda = \Sitedigitalweb\Dresses\Tenant\Tienda::all();
 }
 return view('dresses::facturacion.editar-producto')->with('producto', $producto)->with('tienda', $tienda);    
 }
@@ -254,7 +254,7 @@ public function editarclienteweb($id) {
  if(!$this->tenantName){
  $facturacion = Cliente::find($id);
  }else{
- $facturacion = \DigitalsiteSaaS\Dresses\Tenant\Cliente::find($id); 
+ $facturacion = \Sitedigitalweb\Dresses\Tenant\Cliente::find($id); 
  }
  $facturacion->nombres = Input::get('nombres');
  $facturacion->apellidos = Input::get('apellidos');
@@ -496,7 +496,7 @@ public function editarproductoswebs($id) {
  if(!$this->tenantName){
  $facturacion = Producto::find($id);
  }else{
- $facturacion = \DigitalsiteSaaS\Dresses\Tenant\Producto::find($id); 
+ $facturacion = \Sitedigitalweb\Dresses\Tenant\Producto::find($id); 
  }
  $facturacion->nombre = Input::get('nombre');
  $facturacion->precio = Input::get('precio');

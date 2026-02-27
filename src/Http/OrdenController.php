@@ -59,8 +59,8 @@ public function bulkFicha(Request $request)
 
 public function print($id)
 {
-    $orden = \DigitalsiteSaaS\Dresses\Tenant\Orden::with(['cliente', 'productos', 'vendedor'])->findOrFail($id);
-    $tienda = \DigitalsiteSaaS\Dresses\Tenant\Tienda::find(1);
+    $orden = \Sitedigitalweb\Dresses\Tenant\Orden::with(['cliente', 'productos', 'vendedor'])->findOrFail($id);
+    $tienda = \Sitedigitalweb\Dresses\Tenant\Tienda::find(1);
     $totalAdvances = $orden->adelanto + $orden->adelanto1 + $orden->adelanto2 + $orden->adelanto3;
     
     $pdf = PDF::loadView('dresses::ordenes.pdf', compact('orden', 'totalAdvances', 'tienda'));
@@ -158,7 +158,7 @@ if (!$ultimaOrden || !$ultimaOrden->prefijo) {
                     'precio_unitario' => $producto['price'],
                     'total' => $producto['total'],
                 ]);
-            } else {
+               } else {
                 $nuevoProducto = \Sitedigitalweb\Dresses\Tenant\Producto::create([
                     'nombre' => $producto['name'],
                     'precio' => $producto['price'],
@@ -571,7 +571,7 @@ public function createimpuesto() {
  if(!$this->tenantName){
  $facturacion = new Impuesto;
  }else{
- $facturacion = new \DigitalsiteSaaS\Dresses\Tenant\Impuesto;  
+ $facturacion = new \Sitedigitalweb\Dresses\Tenant\Impuesto;  
  }
  $facturacion->ciudad =  Input::get('ciudad');
  $facturacion->sufijo = Input::get('sufijo');
@@ -585,8 +585,8 @@ public function createimpuesto() {
 
 public function generatePDF($id, $download = false)
 {
-    $orden = \DigitalsiteSaaS\Dresses\Tenant\Orden::with(['cliente', 'productos', 'vendedorRelacion'])->findOrFail($id);
-    $tienda = \DigitalsiteSaaS\Dresses\Tenant\Tienda::find(1);
+    $orden = \Sitedigitalweb\Dresses\Tenant\Orden::with(['cliente', 'productos', 'vendedorRelacion'])->findOrFail($id);
+    $tienda = \Sitedigitalweb\Dresses\Tenant\Tienda::find(1);
     $totalAdvances = $orden->adelanto + $orden->adelanto1 + $orden->adelanto2 + $orden->adelanto3;
     
     $pdf = PDF::loadView('dresses::ordenes.pdf', compact('orden', 'totalAdvances', 'tienda'));
