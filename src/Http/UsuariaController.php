@@ -94,8 +94,8 @@ public function editar($id){
  $usuario = Usuario::find($id);
  $empresas = Tienda::all();
  }else{
- $usuario = \DigitalsiteSaaS\Usuario\Tenant\Usuario::find($id);
- $empresas = \DigitalsiteSaaS\Dresses\Tenant\Tienda::all();
+ $usuario = \Sitedigitalweb\Dresses\Tenant\Usuario::find($id);
+ $empresas = \Sitedigitalweb\Dresses\Tenant\Tienda::all();
  }
  return view('dresses::usuarios.editar')->with('usuario', $usuario)->with('empresas', $empresas);
 }
@@ -200,7 +200,7 @@ $facturacion = Sitedigitalweb\Dresses\Producto::all();
 $empresas = Empresa::all();
 }else{
 $facturacion = \Sitedigitalweb\Dresses\Tenant\Producto::all();
-$empresas = \Sitedigitalweb\Facturacion\Tenant\Empresa::all();
+$empresas = \Sitedigitalweb\Dresses\Tenant\Empresa::all();
 }
 return view('dresses::facturacion.crear_almacen')->with('facturacion', $facturacion)->with('empresas', $empresas);
 }
@@ -221,8 +221,8 @@ public function editarclientes($id){
  $cliente = Cliente::find($id);
  $tienda = Tienda::all();
  }else{
- $cliente = \DigitalsiteSaaS\Dresses\Tenant\Cliente::find($id);
- $tienda = \DigitalsiteSaaS\Dresses\Tenant\Tienda::all();
+ $cliente = \Sitedigitalweb\Dresses\Tenant\Cliente::find($id);
+ $tienda = \Sitedigitalweb\Dresses\Tenant\Tienda::all();
  }
  return view('dresses::clientes.editar-clientes')->with('cliente', $cliente)->with('tienda', $tienda);
 }
@@ -1361,8 +1361,8 @@ public function rentals(Request $request){
    if(!$this->tenantName){
  $empresas = Empresa::all();
  }else{
- $user = \Sitedigitalweb\Usuario\Tenant\Usuario::all();
- $empresas = \Sitedigitalweb\Facturacion\Tenant\Empresa::where('r_social','LIKE',"%{$query}%")->get();
+ $user = \Sitedigitalweb\Dresses\Tenant\Usuario::all();
+ $empresas = \Sitedigitalweb\Dresses\Tenant\Empresa::where('r_social','LIKE',"%{$query}%")->get();
   $tienda = \Sitedigitalweb\Dresses\Tenant\Tienda::where('nombre','LIKE',"%{$query}%")->get();
  }
 
